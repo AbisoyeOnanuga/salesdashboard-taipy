@@ -41,7 +41,7 @@ The dashboard page shows wildfire status on a specific location. The location ca
 - `root/`: Contains the demo source code.
   - `root/data`: Contains the application data files.
   - `root/pages`: Contains the page definition files.
-- `INSTALLATION.md`: Instructions to install _firekit-taipy_.
+- `INSTALLATION.md`: Instructions to install _sales-dashboard_.
 - `LICENSE`: unlicenced.
 - `README.md`: Current file.
 
