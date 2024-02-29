@@ -3,7 +3,7 @@ from taipy.gui import Markdown
 import pandas as pd
 import json
 
-data = 'data/data.csv'
+data = '../data/data.csv'
 
 # convert the list of data to a pandas DataFrame
 data = pd.DataFrame(data)
