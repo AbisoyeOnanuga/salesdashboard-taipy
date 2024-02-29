@@ -1,4 +1,4 @@
-# salesdashboard-taipy
+# Salesdashboard
 Building a Sales Dashboard using Taipy <br/>
 ![Dashboard]
 
