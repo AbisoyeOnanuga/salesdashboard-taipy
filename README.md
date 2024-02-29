@@ -22,7 +22,7 @@ Building a Sales Dashboard using Taipy <br/>
 
 - This app works with a Python version 3.11.5. 
 - run `git clone https://github.com/AbisoyeOnanuga/salesdashboard-taipy.git` from your editor
-- `cd firekit-taipy`
+- `cd salesdashboard-taipy`
 - run `pip install -r requirements.txt`
 - run the *main.py* in the `root/` folder with `python main.py`
 
