@@ -4,6 +4,7 @@ import pandas as pd
 import taipy as tp
 import plotly.express as px
 import taipy.gui.builder as tgb
+import numpy
 
 data = pd.read_csv('data/supermarket_sales.csv')
 
@@ -18,15 +19,57 @@ def create_bar_figure(data, group_by: str):
     fig = px.bar(sales_over_time, x=group_by, y='Total', title='Sales Trends Over Time', color='Total')
     return fig
 
-def create_sales_by_city_map(data):
-    # No need to set mapbox access token
-    city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
-    fig = px.scatter_mapbox(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
-                            zoom=5, center={"lat": 18.7, "lon": 98.9}, mapbox_style="open-street-map", title='Total Sales by City', size_max=50)
-    fig.update_layout(title={'text': "Total Sales by City", 'y': 0.9, 'x': 0.5, 'xanchor': 'center', 'yanchor': 'top'},
-                      legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
-                      margin={"r": 0, "t": 0, "l": 0, "b": 0})
-    return fig
+data["size"] = numpy.interp(data["Total"], [data["Total"].min(), data["Total"].max()], [8, 60])
+
+# Add a column holding the bubble hover texts
+# Format is "<Location> [<Stage of Control>]"
+data["text"] = data.apply(lambda row: f"Location: {row['City']}<br> Branch: [{row['Branch']}]<br> Quantity: {row['Quantity']}<br> Date: {row['Month_Year']}", axis=1)
+
+hoverlabel = {
+    # Use a transparent grey color for the background
+    "bgcolor": "rgba(128, 128, 128, 0.5)",
+    # Use a black color for the border
+    "bordercolor": "black",
+    # Use a black color and a 12px size for the font
+    "font": {"color": "black", "size": 12},
+    # Use a left alignment for the text
+    "align": "left"
+}
+
+marker = {
+    # Use the "size" column to set the bubble size
+    "size": "size",
+    # Use the "stageOfControlCode" column to set the marker color
+    "color": "stage of Control",
+    # Use a discrete color map to assign different colors to different stages of control
+    "color_discrete_map": {"Out of Control": "red", "Being Held": "orange", "Under Control": "green"},
+    "text": "text",
+    # Use the "hoverlabel" parameter to customize the hover text box
+    "hoverlabel": "hoverlabel"
+}
+
+layout = {
+    "geo": {
+        "showland": False,
+        "showocean": False,
+        "scope": "canada",
+        "subunitcolor": "lightgrey",
+        "subunitwidth": 2,
+        "coastlinewidth": 1,
+        "center": {"lat": 54.5, "lon": -125.5},
+        "fitbounds": "locations",
+        "projection_scale": 1,
+        "showcountries": True,
+        "countrycolor": "white",
+        "countrywidth": 2,
+        "showsubunits": True,
+        "showcoastlines": True,
+        "showlakes": True,
+        "showrivers": True,
+        "resolution": 100,
+        "projection": "van der grinten"
+    }
+}
 
 def create_perc_fig(df, group_column):
     # Group, sum, and convert to percentage
@@ -38,7 +81,7 @@ def create_perc_fig(df, group_column):
     fig = px.bar(df, x='Month_Year', y='Percentage', color=group_column, title=f"Evolution of Sales by {group_column} over Time", labels={'Percentage': '% of Total'}, text_auto=True)
     return fig
 
-fig_map = create_sales_by_city_map(data)
+# fig_map = create_sales_by_city_map(data)
 
 with tgb.Page() as page:
     tgb.text("Sales Insights", class_name="h1")
@@ -56,7 +99,7 @@ with tgb.Page() as page:
             tgb.text("Mean Rating", class_name="h1")
             tgb.text("{int(data['Rating'].mean())}", class_name="h3")
 
-    tgb.chart(figure="{fig_map}")
+    tgb.chart(figure="{layout}")
 
     tgb.table("{data}")
 
