@@ -55,7 +55,7 @@ fig_date = create_bar_figure(data, 'Date')
 
 
 
-city = ["Yangon", "Naypyitaw","Mandalay"]
+city = ["Yangon", "Naypyitaw", "Mandalay"]
 
 filtered_data = data.loc[
     data["City"].isin(city)
