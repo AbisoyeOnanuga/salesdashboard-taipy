@@ -25,7 +25,7 @@ def create_sales_by_city_map(data):
     #data['Month_Year'] = pd.to_datetime(data['Month_Year'], format='%m-%Y', errors='coerce')  # Coerce invalid dates to NaT
     # Sort data by the "Date" column
     #data.sort_values(by='Date', inplace=True)  # Sort in ascending order
-    city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean', 'Date': 'first', 'Branch': 'first', 'Quantity': 'first', 'gross_income': 'first', 'Rating': 'first'}).reset_index()
+    city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean', 'Branch': 'first', 'Quantity': 'first', 'gross_income': 'first', 'Rating': 'first'}).reset_index()
     fig = px.scatter_geo(city_sales, lat='Latitude', lon='Longitude', size="Total", color='Total', # Color-coded by total sales amounts
                     hover_name='City', hover_data=['Branch', 'Quantity', 'Total', 'gross_income', 'Rating'], # Include additional columns
                     #animation_frame='Date', # Use the appropriate column for animation
