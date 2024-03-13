@@ -23,7 +23,7 @@ Invoice_ID,Branch,City,Customer_type,Gender,Product_line,Unit_price,Quantity,Tax
 432-48-8869,C,Naypyitaw,Normal,Male,Food and beverages,31.84,10,15.92,334.32,3/10/2024,11:32,Ewallet,318.4,5,15.92,7.5,19.07275,96.120014,03-2024
 772-41-6578,A,Yangon,Normal,Female,Home and lifestyle,43.19,2,4.319,90.699,2/16/2024,15:53,Cash,86.38,5,4.319,8.8,16.86515,96.191096,02-2024
 829-34-3910,B,Mandalay,Normal,Male,Health and beauty,98.44,6,29.532,620.172,3/29/2024,19:21,Ewallet,590.64,5,29.532,5.9,21.969991,96.099072,03-2024
-776-17-7898,A,Yangon,Member,Male,Sports and travel,86.31,10,43.155,906.255,1/15/2024,16:19,Cash,863.1,5,43.155,4.5,16.8669,96.150139,2024-01
+776-17-7898,A,Yangon,Member,Male,Sports and travel,86.31,10,43.155,906.255,1/15/2024,16:19,Cash,863.1,5,43.155,4.5,16.8669,96.150139,01-2024
 283-26-5248,C,Naypyitaw,Normal,Female,Fashion accessories,40.93,4,8.186,171.906,3/5/2024,10:40,Credit card,163.72,5,8.186,5.8,19.066879,96.115449,03-2024
 381-94-3926,B,Mandalay,Normal,Male,Electronic accessories,16.74,6,5.031,105.651,2/8/2024,15:31,Cash,100.62,5,5.031,6.6,21.971357,96.08834,02-2024
 354-25-5821,B,Mandalay,Member,Female,Sports and travel,76.63,9,34.4835,723.6535,3/25/2024,18:30,Ewallet,689.17,5,34.4835,8.7,21.964815,96.097796,03-2024
