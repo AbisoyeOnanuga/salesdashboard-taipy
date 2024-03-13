@@ -21,16 +21,20 @@ def create_bar_figure(data, group_by: str):
     return fig
 
 def create_sales_by_city_map(data):
-    # mapbox_access_token = ...
-    # px.set_mapbox_access_token(mapbox_access_token)
-    city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
-    fig = px.scatter_geo(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
-                        center={"lat": 18.7, "lon": 98.9}, title='Total Sales by City', size_max=50)
+    # Convert "Month_Year" to datetime format (with day set to 1)
+    #data['Month_Year'] = pd.to_datetime(data['Month_Year'], format='%m-%Y', errors='coerce')  # Coerce invalid dates to NaT
+    # Sort data by the "Date" column
+    #data.sort_values(by='Date', inplace=True)  # Sort in ascending order
+    city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean', 'Date': 'first', 'Branch': 'first', 'Quantity': 'first', 'gross_income': 'first', 'Rating': 'first'}).reset_index()
+    fig = px.scatter_geo(city_sales, lat='Latitude', lon='Longitude', size="Total", color='Total', # Color-coded by total sales amounts
+                    hover_name='City', hover_data=['Branch', 'Quantity', 'Total', 'gross_income', 'Rating'], # Include additional columns
+                    #animation_frame='Date', # Use the appropriate column for animation
+                    projection='natural earth', title='Total Sales by City', 
+                    color_continuous_scale='Oranges', center={"lat": 18.7, "lon": 98.9}, size_max=50, basemap_visible=False)
     fig.update_layout(title={'text': "Total Sales by City", 'y': 0.9, 'x': 0.5, 'xanchor': 'center', 'yanchor': 'top'},
                       legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
                       margin={"r": 0, "t": 0, "l": 0, "b": 0})
     return fig
-
 
 def create_perc_fig(df, group_column):
     # Group, sum, and convert to percentage
@@ -78,6 +82,7 @@ def on_selector(state):
 
 
 with tgb.Page() as page:
+    tgb.toggle(theme= True)
     tgb.text("Sales Insights", class_name="h1")
 
     with tgb.layout("1 1 1"):
