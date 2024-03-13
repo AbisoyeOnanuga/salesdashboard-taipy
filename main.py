@@ -53,8 +53,6 @@ fig_time = create_bar_figure(data, 'Time')
 fig_date = create_bar_figure(data, 'Date')
 
 
-
-
 city = ["Yangon", "Naypyitaw", "Mandalay"]
 
 filtered_data = data.loc[
@@ -65,7 +63,6 @@ fig_product_line_perc = create_perc_fig(filtered_data, 'Product_line')
 fig_city_perc = create_perc_fig(filtered_data, 'City')
 fig_gender_perc = create_perc_fig(filtered_data, 'Gender')
 fig_customer_type_perc = create_perc_fig(filtered_data, 'Customer_type')
-
 
 def on_selector(state):
     filtered_data = state.data.loc[
@@ -108,7 +105,7 @@ with tgb.Page() as page:
 
     tgb.text("Analysis", class_name="h2")
 
-    tgb.selector(value="{city}", lov=["Bangkok", "Chiang Mai", "Vientiane", "Luang Prabang", "Yangon", "Naypyitaw"],
+    tgb.selector(value="{city}", lov=["Yangon", "Naypyitaw", "Mandalay"],
                  dropdown=True,
                  multiple=True,
                  label="Select cities",
