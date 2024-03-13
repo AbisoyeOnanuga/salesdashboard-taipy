@@ -11,7 +11,7 @@ Invoice_ID,Branch,City,Customer_type,Gender,Product_line,Unit_price,Quantity,Tax
 692-92-5582,B,Mandalay,Member,Female,Fashion accessories,25.51,4,5.102,107.142,2/6/2024,18:00,Ewallet,102.04,5,5.102,4.4,21.968092,96.088759,02-2024
 233-67-5758,C,Naypyitaw,Normal,Male,Sports and travel,93.72,6,28.116,590.436,3/22/2024,15:22,Cash,562.32,5,28.116,6.8,19.07275,96.120014,03-2024
 303-96-2227,B,Mandalay,Normal,Male,Electronic accessories,68.84,6,20.652,433.692,2/10/2024,17:15,Ewallet,413.04,5,20.652,8.2,21.970638,96.079142,02-2024
-765-26-6951,B,Mandalay,Normal,Male,Food and beverages,54.84,3,8.226,172.746,2/13/2024,13:27,Credit card,164.52,5,8.226,7.6,21.96328,96.083444, 02-2024
+765-26-6951,B,Mandalay,Normal,Male,Food and beverages,54.84,3,8.226,172.746,2/13/2024,13:27,Credit card,164.52,5,8.226,7.6,21.96328,96.083444,02-2024
 329-62-1586,B,Mandalay,Normal,Female,Home and lifestyle,40.3,2,4.03,84.63,3/29/2024,19:38,Cash,80.6,5,4.03,8.5,21.969991,96.099072,03-2024
 319-50-3348,A,Yangon,Member,Female,Fashion accessories,65.82,7,23.036,483.756,1/15/2024,16:19,Credit card,460.72,5,23.036,6,16.86515,96.191096,01-2024
 371-85-5789,C,Naypyitaw,Member,Male,Health and beauty,74.15,3,11.1225,233.5725,3/5/2024,10:40,Cash,222.45,5,11.1225,8.9,19.066879,96.115449,03-2024
