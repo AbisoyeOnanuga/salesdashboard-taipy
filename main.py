@@ -1,12 +1,7 @@
 from taipy.gui import Gui
 
-from configuration import scenario_cfg
 from taipy import Core
 from pages import *
-
-from pages.Overview import Overview
-from pages.Analysis import Analysis
-from pages.Predictions import Predictions
 from pages.root import root_page
 
 pages = {

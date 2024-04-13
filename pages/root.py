@@ -1,9 +1,7 @@
 # import the necessary modules and libraries
 import pandas as pd
-import taipy as tp
-import plotly.express as px
 import taipy.gui.builder as tgb
-import numpy
+from taipy.gui import Gui, Markdown
 
 data = pd.read_csv('data/supermarket_sales.csv')
 
@@ -26,3 +24,5 @@ with tgb.page() as root_page:
             tgb.text("{int(data['Rating'].mean())}", class_name="h3")
     
     tgb.table("{data}")
+
+root_page = Gui(root_page)
