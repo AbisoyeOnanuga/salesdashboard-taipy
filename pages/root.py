@@ -25,4 +25,4 @@ with tgb.page() as root_page:
     
     tgb.table("{data}")
 
-root_page = Gui(root_page)
+root = Markdown("pages/root.md")
