@@ -1,7 +1,8 @@
 from taipy.gui import Gui
+import taipy as tp
 
 from taipy import Core
-from pages import *
+from pages import Analysis, Overview, Predictions
 from pages.root import root
 
 pages = {

@@ -1,10 +1,12 @@
 # import the necessary modules and libraries
 import pandas as pd
 import taipy.gui.builder as tgb
-from taipy.gui import Gui, Markdown
+from taipy.gui import Gui
 
 data = pd.read_csv('data/supermarket_sales.csv')
 
+# Create a page using the correct Taipy GUI builder functions
+root_page = tgb.create_page()
 
 with tgb.page() as root_page:
     tgb.toggle(theme= True)
@@ -24,5 +26,3 @@ with tgb.page() as root_page:
             tgb.text("{int(data['Rating'].mean())}", class_name="h3")
     
     tgb.table("{data}")
-
-root = Markdown("pages/root.md")
